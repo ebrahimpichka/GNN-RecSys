@@ -78,7 +78,11 @@ The `src/data_utils.py` script and the notebooks contain utilities for downloadi
 
 ## How to Use
 
-The primary way to use this codebase is through the Jupyter Notebooks provided in the `notebooks/` directory.
+You can train and evaluate the model using two primary methods: Jupyter Notebooks or command-line scripts.
+
+### 1. Using Jupyter Notebooks (Recommended for Experimentation)
+
+The primary way to use this codebase for experimentation and detailed analysis is through the Jupyter Notebooks provided in the `notebooks/` directory.
 
 1.  **Navigate to the `notebooks/` directory.**
 2.  **Launch Jupyter Lab or Jupyter Notebook:**
@@ -96,6 +100,24 @@ The primary way to use this codebase is through the Jupyter Notebooks provided i
     *   Saving and loading trained models.
 
 4.  **Run the cells in the notebook:** Execute the cells sequentially to train the model and see the results. You can modify parameters, change datasets, or experiment with the model architecture within the notebook.
+
+### 2. Using Command-Line Scripts (Recommended for Automated Training and Evaluation)
+
+For more automated training and evaluation, you can use the scripts provided in the `src/` directory. The main script for training is `train.py`.
+
+1.  **Navigate to the root directory of the project.**
+2.  **Run the `train.py` script with desired arguments.** For example, to train the LightGCN model on the MovieLens 100k dataset:
+    ```bash
+    python -m src.train --dataset_name movielens-100k --epochs 100 --embedding_dim 64 --num_layers 3 --learning_rate 0.001 --device cuda
+    ```
+    You can customize various parameters such as `dataset_name`, `epochs`, `embedding_dim`, `num_layers`, `learning_rate`, `batch_size`, `weight_decay`, `device`, `negative_sampling_ratio`, and `save_path`. Use `python -m src.train --help` to see all available options.
+
+    The script will handle:
+    *   Downloading and processing the specified dataset (if not already processed).
+    *   Building the graph.
+    *   Training the LightGCN model.
+    *   Evaluating the model on the validation set after each epoch.
+    *   Saving the best performing model.
 
 **Key scripts in `src/`:**
 *   `model.py`: Defines the LightGCN architecture. You can inspect this to understand the model's layers and forward pass.
