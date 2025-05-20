@@ -72,11 +72,7 @@ The `src/data_utils.py` script and the notebooks contain utilities for downloadi
 3.  **Install Dependencies:**
     The core dependencies include PyTorch, PyTorch Geometric, pandas, and scikit-learn.
     ```bash
-    pip install torch torchvision torchaudio
-    pip install torch-geometric
-    pip install pandas scikit-learn tqdm
-    # For Jupyter notebooks
-    pip install jupyterlab notebook
+    pip install -r requirements.txt
     ```
     Refer to the PyTorch and PyTorch Geometric official websites for specific installation commands tailored to your system (CPU/GPU, CUDA version).
 
